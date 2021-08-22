@@ -15,17 +15,31 @@
 
     <link rel="shortcut icon" href="images/fav.svg" type="image/x-icon" />
     <link rel="stylesheet" href="reset.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="style.scss" type="text/css" />
 
     <title>todolist application</title>
   </head>
   <body>
     <div class="list-wrapper">
+      <div class="pop-up" hidden="true">
+        <form id="new-item-form">
+          <label
+            >Title: <input id="new-item-name" name="title" type="text"
+          /></label>
+          <label
+            >Text: <input id="new-item-content" name="content" type="text"
+          /></label>
+          <label
+            >Date and time (year month date hours minutes) :
+            <input id="new-item-name" name="time" type="text"
+          /></label>
+          <button type="submit">Add</button>
+        </form>
+      </div>
       <h1>Todo List</h1>
-      <h3>Add item</h3>
+      <button class="add-button" type="button" name="">+</button>
       <form class="list">
         <!-- <input type="text" name="" placeholder="New Item" autocomplete="off" /> -->
-        <button class="add-button" type="button" name="">+</button>
       </form>
     </div>
     <script src="index.js"></script>

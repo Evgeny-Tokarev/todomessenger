@@ -12,17 +12,25 @@
 
     <link rel="shortcut icon" href="/fav.4a1c8076.svg" type="image/x-icon">
     <link rel="stylesheet" href="/reset.302ca0b1.css" type="text/css">
-    <link rel="stylesheet" href="/style.e308ff8e.css" type="text/css">
+    <link rel="stylesheet" href="/style.97fcb138.css" type="text/css">
 
     <title>todolist application</title>
-  <script src="/reset.302ca0b1.js"></script><script src="/style.e308ff8e.js"></script></head>
+  <script src="/reset.302ca0b1.js"></script><script src="/style.97fcb138.js"></script></head>
   <body>
     <div class="list-wrapper">
+      <div class="pop-up" hidden="true">
+        <form id="new-item-form">
+          <label>Title: <input id="new-item-name" name="title" type="text"></label>
+          <label>Text: <input id="new-item-content" name="content" type="text"></label>
+          <label>Date and time (year month date hours minutes) :
+            <input id="new-item-name" name="time" type="text"></label>
+          <button type="submit">Add</button>
+        </form>
+      </div>
       <h1>Todo List</h1>
-      <h3>Add item</h3>
+      <button class="add-button" type="button" name="">+</button>
       <form class="list">
         <!-- <input type="text" name="" placeholder="New Item" autocomplete="off" /> -->
-        <button class="add-button" type="button" name="">+</button>
       </form>
     </div>
     <script src="/src.e31bb0bc.js"></script>

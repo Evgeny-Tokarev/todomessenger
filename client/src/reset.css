@@ -75,3 +75,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
+/* Убираем границу у кнопки */
+button {
+  border: none;
+}

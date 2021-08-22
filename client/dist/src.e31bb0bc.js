@@ -145,19 +145,41 @@ var todoList = [{
 }];
 var form = document.querySelector(".list");
 var addButton = document.querySelector(".add-button");
+var popUp = document.querySelector(".pop-up");
+var newItemForm = document.querySelector("#new-item-form");
 todoList.forEach(function (itemData) {
   var todoItem = document.createElement("div");
   var input = document.createElement("input");
   input.hidden = true;
-  todoItem.innerHTML = "<h3 class=\"item-title\">".concat(itemData.name, "</h3><span class=\"item-content\">").concat(itemData.text, "</span>");
+  var timeItem = "".concat(itemData.time.year, ":").concat(itemData.time.month, ":").concat(itemData.time.date, ":").concat(itemData.time.hours, ":").concat(itemData.time.minutes);
+  todoItem.innerHTML = "<h3 class=\"item-title\">".concat(itemData.name, "</h3><span class=\"item-content\">").concat(itemData.text, "</span><span class=\"time-content\">").concat(timeItem, "</span>");
   form.appendChild(input);
   form.appendChild(todoItem);
 });
-addButton.addEventListener("click", plus);
+window.addEventListener("click", clickHandler);
+
+function clickHandler(e) {
+  if (!popUp.contains(e.target)) {
+    popUp.hidden = true;
+  }
+
+  if (e.target === addButton) {
+    plus(e);
+  }
+}
+
+newItemForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  sendNewItem(e);
+});
 
 function plus(e) {
   e.preventDefault();
-  console.log("Data request");
+  popUp.hidden = false;
+}
+
+function sendNewItem(e) {
+  console.log(e);
 }
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -187,7 +209,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63350" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58400" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

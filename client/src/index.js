@@ -15,17 +15,35 @@ const todoList = [
 ];
 const form = document.querySelector(".list");
 const addButton = document.querySelector(".add-button");
+const popUp = document.querySelector(".pop-up");
+const newItemForm = document.querySelector("#new-item-form");
 todoList.forEach((itemData) => {
   let todoItem = document.createElement("div");
   let input = document.createElement("input");
   input.hidden = true;
-  todoItem.innerHTML = `<h3 class="item-title">${itemData.name}</h3><span class="item-content">${itemData.text}</span>`;
+  let timeItem = `${itemData.time.year}:${itemData.time.month}:${itemData.time.date}:${itemData.time.hours}:${itemData.time.minutes}`;
+  todoItem.innerHTML = `<h3 class="item-title">${itemData.name}</h3><span class="item-content">${itemData.text}</span><span class="time-content">${timeItem}</span>`;
   form.appendChild(input);
 
   form.appendChild(todoItem);
 });
-addButton.addEventListener("click", plus);
+window.addEventListener("click", clickHandler);
+function clickHandler(e) {
+  if (!popUp.contains(e.target)) {
+    popUp.hidden = true;
+  }
+  if (e.target === addButton) {
+    plus(e);
+  }
+}
+newItemForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  sendNewItem(e);
+});
 function plus(e) {
   e.preventDefault();
-  console.log("Data request");
+  popUp.hidden = false;
+}
+function sendNewItem(e) {
+  console.log(e);
 }

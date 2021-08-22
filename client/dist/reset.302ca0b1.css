@@ -75,5 +75,10 @@ select {
     scroll-behavior: auto !important;
   }
 }
+/* Убираем границу у кнопки */
+button {
+  border: none;
+}
+
 
 /*# sourceMappingURL=/reset.302ca0b1.css.map */
