@@ -1,4 +1,5 @@
 "use strict";
+import { sendNewItem } from "./requests";
 const todoList = [
   {
     id: 1,
@@ -38,12 +39,14 @@ function clickHandler(e) {
 }
 newItemForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  sendNewItem(e);
+  let newData = {
+    name: this.title.value,
+    text: this.content.value,
+    time: this.time.value,
+  };
+  sendNewItem(newData);
 });
 function plus(e) {
   e.preventDefault();
   popUp.hidden = false;
-}
-function sendNewItem(e) {
-  console.log(e);
 }
