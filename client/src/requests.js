@@ -4,12 +4,15 @@ async function sendNewItem(dataObj) {
   console.log(dataObj);
   let response = await fetch("http://localhost:3000/todos", {
     method: "POST",
-    contentType: "application/json",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json; charset=UTF-8",
+    },
     body: dataObj,
   });
 
   let result = await response.json();
 
-  alert(result.message);
+  console.log(result);
 }
 export { sendNewItem };
