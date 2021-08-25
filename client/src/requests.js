@@ -1,7 +1,6 @@
 import "regenerator-runtime/runtime";
 async function sendNewItem(dataObj) {
   dataObj = JSON.stringify(dataObj);
-  console.log(dataObj);
   let response = await fetch("http://localhost:3000/todos", {
     method: "POST",
     headers: {
@@ -13,6 +12,14 @@ async function sendNewItem(dataObj) {
 
   let result = await response.json();
 
-  console.log(result);
+  return result;
 }
-export { sendNewItem };
+async function getItems() {
+  let response = await fetch("http://localhost:3000/todos", {
+    method: "GET",
+  });
+
+  let result = await response.json();
+  return result;
+}
+export { sendNewItem, getItems };
