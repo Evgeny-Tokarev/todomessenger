@@ -23,6 +23,11 @@ body {
     grid-area: h1;
   }
 }
+@media screen and (max-width: 500px) {
+  .list-wrapper {
+    width: 90%;
+  }
+}
 .pop-up {
   left: 0;
   top: 0;
@@ -46,14 +51,14 @@ body {
       width: 100%;
       overflow: hidden;
     }
-    button {
-      justify-self: center;
-      width: 40px;
-      height: 40px;
-      border: 1px solid black;
-      border-radius: 50%;
-    }
   }
+}
+.circle-button {
+  justify-self: center;
+  min-width: 40px;
+  min-height: 40px;
+  border: 1px solid black;
+  border-radius: 20px;
 }
 .list {
   grid-area: form;
@@ -62,14 +67,16 @@ body {
   margin-top: 2rem;
   border-top: 1px solid black;
 
-  div {
+  div.todo-item {
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 5fr minmax(min-content, 1fr);
     grid-template-rows: 1fr auto;
     grid-template-areas:
       "h3  time"
       "text time ";
     text-align: left;
+    column-gap: 0.5rem;
+
     border-bottom: 1px solid black;
     h3 {
       grid-area: h3;
@@ -82,6 +89,12 @@ body {
     }
   }
 }
+.select-popup {
+  height: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
 .add-button {
   grid-area: button;
   width: 30px;

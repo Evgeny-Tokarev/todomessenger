@@ -1,5 +1,7 @@
 "use strict";
-import { sendNewItem, getItems } from "./requests";
+import { sendNewItem, getItems, itemRemove } from "./requests";
+import PopUpHtml from "./PopUpHtml";
+import popUpHtml from "./PopUpHtml";
 
 const form = document.querySelector(".list");
 const addButton = document.querySelector(".add-button");
@@ -14,6 +16,8 @@ function itemsRendering() {
     }
     data.forEach((itemData) => {
       let todoItem = document.createElement("div");
+      todoItem.classList.add("todo-item");
+      todoItem.dataset.id = itemData.id;
       let input = document.createElement("input");
       input.hidden = true;
       itemData.time.minutes =
@@ -37,11 +41,25 @@ function itemsRendering() {
 itemsRendering();
 window.addEventListener("click", clickHandler);
 function clickHandler(e) {
+  console.log(e.target);
+
   if (!popUp.contains(e.target)) {
     popUp.hidden = true;
   }
   if (e.target === addButton) {
     plus(e);
+  }
+  if (document.querySelector(".select-popup")) {
+    if (!e.target.matches(".select-popup > .circle-button")) {
+      changePopUpHandle(e.target, document.querySelector(".select-popup"));
+    }
+  }
+
+  if (form.contains(e.target)) {
+    changePopUpHandle(e.target);
+    if (document.querySelector(".select-popup").contains(e.target)) {
+      changeTypeSelect(e.target, false);
+    }
   }
 }
 newItemForm.addEventListener("submit", function (e) {
@@ -51,11 +69,11 @@ newItemForm.addEventListener("submit", function (e) {
     name: this.title.value,
     text: this.content.value,
     time: {
-      year: parseInt(date.getFullYear()),
-      month: parseInt(date.getMonth()),
-      date: parseInt(date.getDate()),
-      hours: parseInt(date.getHours()),
-      minutes: parseInt(date.getMinutes()),
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      date: date.getDate(),
+      hours: date.getHours(),
+      minutes: date.getMinutes(),
     },
   };
 
@@ -73,4 +91,21 @@ function plus(e) {
   e.preventDefault();
   popUp.hidden = false;
   titleInput.focus();
+}
+function changePopUpHandle(target, popUp) {
+  let itemToChange = target.closest(".todo-item");
+  let selectionPopUp = document.createElement("div");
+  if (popUp) {
+    let parent = popUp.closest(".todo-item");
+    parent.removeChild(parent.childNodes[3]);
+  } else {
+    if (!document.querySelector(".select-popup")) {
+      selectionPopUp.classList.add("select-popup");
+      selectionPopUp.innerHTML = popUpHtml;
+      itemToChange.appendChild(selectionPopUp);
+    }
+  }
+}
+function changeTypeSelect(target) {
+  console.log(target.closest("div.todo-item").dataset.id);
 }
