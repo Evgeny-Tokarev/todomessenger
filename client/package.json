@@ -1,0 +1,27 @@
+{
+  "name": "todomessenger",
+  "version": "1.0.0",
+  "description": "Совместный проект Александра и Евгения",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evgeny-Tokarev/todomessenger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evgeny-Tokarev/todomessenger/issues"
+  },
+  "homepage": "https://github.com/Evgeny-Tokarev/todomessenger#readme",
+  "dependencies": {
+    "sass": "^1.38.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
