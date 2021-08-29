@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Evgeny-Tokarev/todomessenger#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "sass": "^1.38.0"
   },
   "devDependencies": {
