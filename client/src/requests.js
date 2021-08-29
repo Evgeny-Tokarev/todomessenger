@@ -15,6 +15,8 @@ async function removeItem(id) {
 }
 async function sendNewItem(dataObj) {
   dataObj = JSON.stringify(dataObj);
+  console.log(dataObj);
+  console.log("Trying to create...");
   let response = await fetch("http://localhost:8000/api/v1/todo", {
     method: "POST",
     headers: {

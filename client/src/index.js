@@ -12,7 +12,7 @@ const titleInput = document.querySelector("#new-item-name");
 itemsRendering();
 window.addEventListener("click", function (e) {
   console.log(e.target);
-
+  console.log(buttons.dataset.id);
   if (!popUp.contains(e.target)) {
     popUp.hidden = true;
   }
@@ -29,7 +29,7 @@ window.addEventListener("click", function (e) {
 
     buttonsAdd(e.target);
   } else {
-    if (buttons.dataset) {
+    if (buttons.dataset.id) {
       buttonsRemove();
     }
   }
@@ -38,12 +38,11 @@ newItemForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let date = new Date(this.time.value);
   let newData = {
-    title: this.title.value,
-    create_at: new Date(),
+    text: this.title.value,
     reminder_time: date,
   };
 
-  if (newData.name && newData.text && newData.time && date > new Date()) {
+  if (newData.text && newData.reminder_time && date > new Date()) {
     sendNewItem(newData).then(function (data) {
       newItemForm.reset();
       popUp.hidden = true;
