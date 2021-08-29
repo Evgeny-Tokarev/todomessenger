@@ -1,7 +1,8 @@
 import "regenerator-runtime/runtime";
-async function itemModification(id) {}
-async function itemRemove(id) {
-  let response = await fetch("http://localhost:3000/todos" + id, {
+async function changeItem(id) {}
+async function removeItem(id) {
+  console.log("Removing...");
+  let response = await fetch("http://localhost:3000/todos/" + id, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
@@ -14,7 +15,7 @@ async function itemRemove(id) {
 }
 async function sendNewItem(dataObj) {
   dataObj = JSON.stringify(dataObj);
-  let response = await fetch("http://localhost:3000/todos", {
+  let response = await fetch("http://localhost:8000/api/v1/todo", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -24,15 +25,16 @@ async function sendNewItem(dataObj) {
   });
 
   let result = await response.json();
-
+  console.log(result);
   return result;
 }
 async function getItems() {
-  let response = await fetch("http://localhost:3000/todos", {
+  let response = await fetch("http://localhost:8000/api/v1/todo", {
     method: "GET",
+    mode: "cors",
   });
 
   let result = await response.json();
   return result;
 }
-export { sendNewItem, getItems, itemRemove };
+export { sendNewItem, getItems, removeItem, changeItem };
