@@ -70,17 +70,12 @@ body {
   div.todo-item {
     display: grid;
     grid-template-columns: 5fr minmax(min-content, 1fr);
-    grid-template-rows: 1fr auto;
-    grid-template-areas:
-      "h3  time"
-      "text time ";
+
+    grid-template-areas: "text time ";
     text-align: left;
     column-gap: 0.5rem;
 
     border-bottom: 1px solid black;
-    h3 {
-      grid-area: h3;
-    }
     .item-content {
       grid-area: text;
     }

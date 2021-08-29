@@ -1,13 +1,24 @@
 "use strict";
+<<<<<<< HEAD
 import { sendNewItem, getItems, removeItem, changeItem } from "./requests";
 import buttons from "./buttons";
 import itemsRendering from "./itemsRendering";
 console.log(buttons);
+=======
+import { sendNewItem, removeItem, changeItem } from "./requests";
+import buttons from "./buttons";
+import itemsRendering from "./itemsRendering";
+
+>>>>>>> temp-branch
 const list = document.querySelector(".list");
 const addButton = document.querySelector(".add-button");
 const popUp = document.querySelector(".pop-up");
 const newItemForm = document.querySelector("#new-item-form");
+<<<<<<< HEAD
 const titleInput = document.querySelector("#new-item-name");
+=======
+const textInput = document.querySelector("#new-item-content");
+>>>>>>> temp-branch
 
 itemsRendering();
 window.addEventListener("click", function (e) {
@@ -19,7 +30,11 @@ window.addEventListener("click", function (e) {
   if (e.target === addButton) {
     e.preventDefault();
     popUp.hidden = false;
+<<<<<<< HEAD
     titleInput.focus();
+=======
+    textInput.focus();
+>>>>>>> temp-branch
   }
 
   if (list.contains(e.target)) {
@@ -29,7 +44,11 @@ window.addEventListener("click", function (e) {
 
     buttonsAdd(e.target);
   } else {
+<<<<<<< HEAD
     if (buttons.dataset.id) {
+=======
+    if (buttons.dataset.id && list.contains.buttons) {
+>>>>>>> temp-branch
       buttonsRemove();
     }
   }
@@ -38,7 +57,11 @@ newItemForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let date = new Date(this.time.value);
   let newData = {
+<<<<<<< HEAD
     text: this.title.value,
+=======
+    text: this.content.value,
+>>>>>>> temp-branch
     reminder_time: date,
   };
 
@@ -66,10 +89,15 @@ function buttonsRemove() {
 
 function changeTypeSelect(target) {
   let id = target.closest(".todo-item").dataset.id;
+<<<<<<< HEAD
   console.log(target);
   if (target.classList.contains("delete-button")) {
     removeItem(id).then((data) => {
       console.log(data);
+=======
+  if (target.classList.contains("delete-button")) {
+    removeItem(id).then(() => {
+>>>>>>> temp-branch
       itemsRendering();
     });
   } else {
