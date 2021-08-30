@@ -1,13 +1,12 @@
 import { getItems } from "./requests";
-import list from "./index";
+import {list} from "./index";
 function itemsRendering() {
   getItems().then((data) => {
+    console.log(data);
     while (list.firstChild) {
       list.removeChild(list.firstChild);
     }
     data.forEach((itemData) => {
-<<<<<<< HEAD
-=======
       let options = {
         year: "numeric",
         month: "long",
@@ -21,28 +20,12 @@ function itemsRendering() {
         options
       );
       console.log(time);
->>>>>>> temp-branch
       let todoItem = document.createElement("div");
       todoItem.classList.add("todo-item");
       todoItem.dataset.id = itemData.id;
       let input = document.createElement("input");
       input.hidden = true;
-<<<<<<< HEAD
-      itemData.time.minutes =
-        itemData.time.minutes < 10
-          ? "0" + itemData.time.minutes
-          : itemData.time.minutes;
-      itemData.time.month =
-        itemData.time.month < 10
-          ? "0" + itemData.time.month
-          : itemData.time.month;
-      itemData.time.date =
-        itemData.time.date < 10 ? "0" + itemData.time.date : itemData.time.date;
-      let timeItem = `${itemData.time.date} ${itemData.time.month} ${itemData.time.year} ${itemData.time.hours}:${itemData.time.minutes}`;
-      todoItem.innerHTML = `<h3 class="item-title">${itemData.name}</h3><span class="item-content">${itemData.text}</span><span class="time-content">${timeItem}</span>`;
-=======
       todoItem.innerHTML = `</h3><span class="item-content">${itemData.text}</span><span class="time-content">${time}</span>`;
->>>>>>> temp-branch
       list.appendChild(input);
 
       list.appendChild(todoItem);
