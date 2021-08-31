@@ -2,7 +2,6 @@ import { getItems } from "./requests";
 import {list} from "./index";
 function itemsRendering() {
   getItems().then((data) => {
-    console.log(data);
     while (list.firstChild) {
       list.removeChild(list.firstChild);
     }
@@ -15,11 +14,10 @@ function itemsRendering() {
         minute: "numeric",
         second: "numeric",
       };
-      let time = new Date(itemData.reminder_time).toLocaleString(
+       let time = new Date(itemData.reminder_time).toLocaleString(
         undefined,
         options
       );
-      console.log(time);
       let todoItem = document.createElement("div");
       todoItem.classList.add("todo-item");
       todoItem.dataset.id = itemData.id;
@@ -32,4 +30,4 @@ function itemsRendering() {
     });
   });
 }
-export default itemsRendering;
+export  {itemsRendering};
