@@ -1,7 +1,7 @@
 # Описание приложения
 
 Простое todo приложение, созданное мной(Evgeny Tokarev) для отработки командной работы
-при создании клиент-серверного приложения. Спасибо [Александру]:https://github.com/iNgredie.com
+при создании клиент-серверного приложения. Спасибо Александру https://github.com/iNgredie.com
 за backend-часть.
 
 ## Быстрый старт
@@ -34,4 +34,4 @@
 
 ## Авторы
 
-Совместный проект Александра `https://github.com/iNgredie` и Евгения `https://github.com/Evgeny-Tokarev`
+Совместный проект Александра https://github.com/iNgredie и Евгения https://github.com/Evgeny-Tokarev
