@@ -1,9 +1,7 @@
 import "regenerator-runtime/runtime";
-import {sendButton} from "./index";
 require("dotenv").config();
 
 async function changeItem(id) {
-  console.log("Changing...");
   let response = await fetch(process.env.BASE_URL + id, {
     method: "PUT",
     headers: {
@@ -17,7 +15,6 @@ async function changeItem(id) {
 }
 
 async function removeItem(id) {
-  console.log("Removing...");
   let response = await fetch(process.env.BASE_URL + id, {
     method: "DELETE",
     headers: {
@@ -26,11 +23,10 @@ async function removeItem(id) {
   });
 }
 
-async function sendItem(dataObj,id) {
+async function sendItem(dataObj, id) {
   dataObj = JSON.stringify(dataObj);
-  console.log("Trying to create...");
-  let response = await fetch(process.env.BASE_URL+ id, {
-    method: !id ? "POST": "PUT",
+  let response = await fetch(process.env.BASE_URL + id, {
+    method: !id ? "POST" : "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json; charset=UTF-8",
@@ -38,7 +34,6 @@ async function sendItem(dataObj,id) {
     body: dataObj,
   });
   let result = await response.json();
-  console.log(result);
   return result;
 }
 

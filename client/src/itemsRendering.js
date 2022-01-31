@@ -1,5 +1,6 @@
 import { getItems } from "./requests";
-import {list} from "./index";
+import { list } from "./index";
+
 function itemsRendering() {
   getItems().then((data) => {
     while (list.firstChild) {
@@ -10,14 +11,10 @@ function itemsRendering() {
         year: "numeric",
         month: "long",
         day: "2-digit",
-        hours: "2-digit",
+        hour: "2-digit",
         minute: "numeric",
-        second: "numeric",
       };
-       let time = new Date(itemData.reminder_time).toLocaleString(
-        undefined,
-        options
-      );
+      let time = new Date(itemData.reminder_time).toLocaleString("en", options);
       let todoItem = document.createElement("div");
       todoItem.classList.add("todo-item");
       todoItem.dataset.id = itemData.id;
@@ -30,4 +27,4 @@ function itemsRendering() {
     });
   });
 }
-export  {itemsRendering};
+export { itemsRendering };
