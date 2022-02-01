@@ -31,6 +31,7 @@
 - Описание API - Swagger OpenAPI Version 3
 - docker/docker-compose
 - sqlite
+- npm
 
 ## Авторы
 
